@@ -4,5 +4,6 @@
 /**
  * 
  */
-module Tarea1Comp {
+module Tarea1ICI4344 {
+	requires java.rmi;
 }

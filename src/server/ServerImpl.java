@@ -16,7 +16,7 @@ public class ServerImpl extends UnicastRemoteObject implements InterfazDeServer 
 	}
 	
 
-	public int addPersona(Persona p) {
+	public int crearPersona(Persona p) {
 		this.personas.add(p);
 		return 0;
 	}

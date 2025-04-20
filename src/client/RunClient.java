@@ -20,7 +20,7 @@ public class RunClient {
 			if (bufferInput == '1') {
 				client.getPersonas();
 			} else if (bufferInput == '2') {
-				client.agregarPersona();
+				client.crearPersona();
 			}
 			// Limpiar el buffer
             System.in.skip(System.in.available());
