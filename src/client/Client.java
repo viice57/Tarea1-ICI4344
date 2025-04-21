@@ -11,34 +11,27 @@ import common.Persona;
 
 public class Client {
 	private InterfazDeServer server;
+
 	public Client() {}
 
+	// Conecta con el servidor
 	public void startClient() throws RemoteException, NotBoundException {
-		Registry registry = LocateRegistry.getRegistry("localhost", 5000);
+		Registry registry = LocateRegistry.getRegistry("localhost", 1009);
 		server = (InterfazDeServer) registry.lookup("server");
 	}
-	
-	public ArrayList<Persona> getPersonas() throws RemoteException {
+
+	// Mostrar lista de personas
+	public void mostrarPersonas() throws RemoteException {
 		ArrayList<Persona> personas = server.getPersonas();
-		
-		System.out.println("ID NOMBRE EDAD");
-		
-		for (int i = 0; i < personas.size(); i++) {
-			Persona persona = personas.get(i);
-			String nombre;
-			int id, edad;
-			
-			id = persona.getId();
-			nombre = persona.getNombre();
-			edad = persona.getEdad();
-			
-			System.out.println(id + " " + nombre + " " + edad);
+
+		System.out.println("NOMBRE\tEDAD");
+		for (Persona persona : personas) {
+			System.out.println(persona.getNombre() + "\t" + persona.getEdad());
 		}
-		
-		return null;
 	}
-	
-	public void crearPersona() throws RemoteException {
-		server.crearPersona();
+
+	// Crear persona (usando nombre y edad)
+	public void crearPersona(String nombre, int edad) throws RemoteException {
+		server.crearPersona(nombre, edad);
 	}
 }
